@@ -19,6 +19,9 @@ module.exports = function(config) {
       "jasmine"
     ],
 
+    // unit test coverage reporters
+    reporters: ['progress', 'junit', 'coverage'],
+
     // list of files / patterns to load in the browser
     files: [
       // bower:js
@@ -30,6 +33,14 @@ module.exports = function(config) {
       "test/mock/**/*.js",
       "test/spec/**/*.js"
     ],
+
+    // list all the preprocessors
+    preprocessors: {
+      // source files, that you wanna generate coverage for
+      // do not include tests or libraries
+      // (these files will be instrumented by Istanbul)
+      'app/scripts/**/*.js': ['coverage']
+    },
 
     // list of files / patterns to exclude
     exclude: [
@@ -53,8 +64,21 @@ module.exports = function(config) {
     // Which plugins to enable
     plugins: [
       "karma-phantomjs-launcher",
-      "karma-jasmine"
+      "karma-jasmine",
+      'karma-junit-reporter',
+      'karma-coverage'
     ],
+
+    junitReporter: {
+      outputFile: '../../../report/angularTest-junit.xml',
+      suite: ''
+    },
+
+    coverageReporter: {
+      dir: '../../report/coverage/app',
+      type: 'lcov'
+    },
+
 
     // Continuous Integration mode
     // if true, it capture browsers, run tests and exit

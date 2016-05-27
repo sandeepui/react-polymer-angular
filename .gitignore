@@ -2,3 +2,5 @@ react/node_modules
 fakeservice/node_modules
 react/dist
 .idea
+fakeservice/comments/data/storage.bson
+fakeservice/comments/data/diagnostic.data
